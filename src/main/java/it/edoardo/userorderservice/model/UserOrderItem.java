@@ -22,6 +22,6 @@ public class UserOrderItem {
     private Integer quantity;
 
     @ManyToOne
-    @JoinColumn(name = "user_order_items")
-    private UserOrder order;
+    @JoinColumn(name = "user_order_id")
+    private UserOrder userOrder;
 }

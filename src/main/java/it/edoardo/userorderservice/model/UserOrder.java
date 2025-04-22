@@ -27,6 +27,6 @@ public class UserOrder {
 
     private LocalDate orderDate;
 
-    @OneToMany(mappedBy = "userOrder",cascade = CascadeType.ALL,orphanRemoval = true)
+    @OneToMany(mappedBy = "userOrder", cascade = CascadeType.ALL, orphanRemoval = true)
     private List<UserOrderItem> items;
 }
