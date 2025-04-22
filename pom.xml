@@ -26,6 +26,24 @@
         <tag/>
         <url/>
     </scm>
+    <profiles>
+        <profile>
+            <id>local</id>
+            <activation>
+                <activeByDefault>true</activeByDefault>
+            </activation>
+            <properties>
+                <spring.profiles.active>local</spring.profiles.active>
+            </properties>
+        </profile>
+
+        <profile>
+            <id>docker</id>
+            <properties>
+                <spring.profiles.active>docker</spring.profiles.active>
+            </properties>
+        </profile>
+    </profiles>
     <properties>
         <java.version>17</java.version>
         <spring-cloud.version>2024.0.1</spring-cloud.version>
@@ -88,6 +106,15 @@
                             <version>1.18.36</version> <!-- ✅ aggiunta la versione -->
                         </path>
                     </annotationProcessorPaths>
+                </configuration>
+            </plugin>
+            <plugin>
+                <groupId>org.apache.maven.plugins</groupId>
+                <artifactId>maven-surefire-plugin</artifactId>
+                <configuration>
+                    <systemPropertyVariables>
+                        <spring.profiles.active>${spring.profiles.active}</spring.profiles.active>
+                    </systemPropertyVariables>
                 </configuration>
             </plugin>
 
